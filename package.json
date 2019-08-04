@@ -1,0 +1,40 @@
+{
+  "name": "js_excercise_for_backend_4",
+  "version": "1.0.0",
+  "description": "このレポジトリは[Web白熱教室](https://tsuyopon.xyz/)の[JavaScriptの学習コンテンツ > JavaScriptバックエンド編](https://tsuyopon.xyz/learning-contents/web-dev/javascript/backend/)にある「[【エクササイズ】カウンターの要件定義と機能実装をする](https://tsuyopon.xyz/learning-contents/web-dev/javascript/backend/js-excercise-for-backend-4/)」で利用するものです。",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --fix",
+    "precommit": "lint-staged",
+    "test": "mocha"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/motikoma/js_excercise_for_backend_4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/motikoma/js_excercise_for_backend_4/issues"
+  },
+  "homepage": "https://github.com/motikoma/js_excercise_for_backend_4#readme",
+  "devDependencies": {
+    "eslint": "^5.2.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.13.7",
+    "mocha": "^6.2.0",
+    "power-assert": "^1.6.1"
+  },
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
