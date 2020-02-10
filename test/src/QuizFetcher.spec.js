@@ -19,7 +19,7 @@ describe("QuizFetcherのクラス", () => {
       assert.strictEqual(typeof QuizFetcher.fetch, "function");
     });
 
-    it("[async/await版]fetchメソッドの戻り値の型チェック]", async () => {
+    it("[async/await版]fetchメソッドの戻り値の型チェック", async () => {
       const data = await QuizFetcher.fetch();
       const results = data.results;
 
@@ -37,6 +37,28 @@ describe("QuizFetcherのクラス", () => {
         assert.strictEqual(Array.isArray(incorrect_answers), true);
         incorrect_answers.forEach(answer => {
           assert.strictEqual(typeof answer, "string");
+        });
+      });
+    });
+
+    it("[Promise版]fetchメソッドの戻り値の型チェック", () => {
+      return QuizFetcher.fetch().then(data => {
+        const results = data.results;
+        assert.strictEqual(Array.isArray(results), true);
+        assert.strictEqual(results.length, 10);
+
+        results.forEach(quiz => {
+          assert.strictEqual(typeof quiz.category, "string");
+          assert.strictEqual(typeof quiz.type, "string");
+          assert.strictEqual(typeof quiz.difficulty, "string");
+          assert.strictEqual(typeof quiz.question, "string");
+          assert.strictEqual(typeof quiz.correct_answer, "string");
+
+          const incorrect_answers = quiz.incorrect_answers;
+          assert.strictEqual(Array.isArray(incorrect_answers), true);
+          incorrect_answers.forEach(answer => {
+            assert.strictEqual(typeof answer, "string");
+          });
         });
       });
     });
