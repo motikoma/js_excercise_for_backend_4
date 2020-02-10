@@ -33,9 +33,9 @@ describe("QuizFetcherのクラス", () => {
         assert.strictEqual(typeof quiz.question, "string");
         assert.strictEqual(typeof quiz.correct_answer, "string");
 
-        const incorrect_answers = quiz.incorrect_answers;
-        assert.strictEqual(Array.isArray(incorrect_answers), true);
-        incorrect_answers.forEach(answer => {
+        const incorrectAnswers = quiz.incorrect_answers;
+        assert.strictEqual(Array.isArray(incorrectAnswers), true);
+        incorrectAnswers.forEach(answer => {
           assert.strictEqual(typeof answer, "string");
         });
       });
@@ -54,9 +54,9 @@ describe("QuizFetcherのクラス", () => {
           assert.strictEqual(typeof quiz.question, "string");
           assert.strictEqual(typeof quiz.correct_answer, "string");
 
-          const incorrect_answers = quiz.incorrect_answers;
-          assert.strictEqual(Array.isArray(incorrect_answers), true);
-          incorrect_answers.forEach(answer => {
+          const incorrectAnswers = quiz.incorrect_answers;
+          assert.strictEqual(Array.isArray(incorrectAnswers), true);
+          incorrectAnswers.forEach(answer => {
             assert.strictEqual(typeof answer, "string");
           });
         });
@@ -64,26 +64,31 @@ describe("QuizFetcherのクラス", () => {
     });
 
     it("[コールバック(done)版]fetchメソッドの戻り値の型チェック", done => {
-      QuizFetcher.fetch().then(data => {
-        const results = data.results;
-        assert.strictEqual(Array.isArray(results), true);
-        assert.strictEqual(results.length, 10);
+      QuizFetcher.fetch()
+        .then(data => {
+          const results = data.results;
+          assert.strictEqual(Array.isArray(results), true);
+          assert.strictEqual(results.length, 10);
 
-        results.forEach(quiz => {
-          assert.strictEqual(typeof quiz.category, "string");
-          assert.strictEqual(typeof quiz.type, "string");
-          assert.strictEqual(typeof quiz.difficulty, "string");
-          assert.strictEqual(typeof quiz.question, "string");
-          assert.strictEqual(typeof quiz.correct_answer, "string");
+          results.forEach(quiz => {
+            assert.strictEqual(typeof quiz.category, "string");
+            assert.strictEqual(typeof quiz.type, "string");
+            assert.strictEqual(typeof quiz.difficulty, "string");
+            assert.strictEqual(typeof quiz.question, "string");
+            assert.strictEqual(typeof quiz.correct_answer, "string");
 
-          const incorrect_answers = quiz.incorrect_answers;
-          assert.strictEqual(Array.isArray(incorrect_answers), true);
-          incorrect_answers.forEach(answer => {
-            assert.strictEqual(typeof answer, "string");
+            const incorrectAnswers = quiz.incorrect_answers;
+            assert.strictEqual(Array.isArray(incorrectAnswers), true);
+            incorrectAnswers.forEach(answer => {
+              assert.strictEqual(typeof answer, "string");
+            });
           });
+
+          done();
+        })
+        .catch(error => {
+          done(error);
         });
-      });
-      done();
     });
   });
 });
