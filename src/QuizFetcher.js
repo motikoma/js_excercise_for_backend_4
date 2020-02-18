@@ -11,4 +11,6 @@ class QuizFetcher {
   }
 }
 
+// hoge
+
 module.exports = QuizFetcher;
